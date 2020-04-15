@@ -327,7 +327,15 @@ function keyPressed() {
 			if (player.direction === RIGHT) break;
 			player.set_direction(LEFT);
 			break;
+		case 65: //a 
+			if (player.direction === RIGHT) break;
+			player.set_direction(LEFT);
+			break;
 		case RIGHT:
+			if (player.direction === LEFT) break;
+			player.set_direction(RIGHT);
+			break;
+		case 68: //d
 			if (player.direction === LEFT) break;
 			player.set_direction(RIGHT);
 			break;
@@ -335,7 +343,15 @@ function keyPressed() {
 			if (player.direction === DOWN) break;
 			player.set_direction(UP);
 			break;
+		case 87: //w
+			if (player.direction === DOWN) break;
+			player.set_direction(UP);
+			break;
 		case DOWN:
+			if (player.direction === UP) break;
+			player.set_direction(DOWN);
+			break;
+		case 83: //s
 			if (player.direction === UP) break;
 			player.set_direction(DOWN);
 			break;
