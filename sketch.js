@@ -5,7 +5,6 @@ let get_rows = window.location.href.match(/rows=(\d+)/);
 let get_cols = window.location.href.match(/cols=(\d+)/);
 ROWS = (get_rows === null) ? 10 : Number.parseInt(get_rows[1])
 COLS = (get_cols === null) ? 10 : Number.parseInt(get_cols[1])
-console.log(ROWS, COLS);
 
 let LEFT;
 let RIGHT;
