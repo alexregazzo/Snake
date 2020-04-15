@@ -120,8 +120,8 @@ function draw() {
 	}
 	noStroke();
 	fill(255);
-	text(`Score: ${floor(player.score)}`, 0, font_size * 1);
-	text(`Score lost: ${floor(player.score_lost)}`, 0, font_size * 2);
+	text(`Score: ${round(player.score)}`, 0, font_size * 1);
+	text(`Score lost: ${round(player.score_lost)}`, 0, font_size * 2);
 
 	translate(translate_x, translate_y);
 
