@@ -1,8 +1,8 @@
 let COLS;
 let ROWS;
 
-let get_rows = window.location.href.match(/rows=(\d+)/);
-let get_cols = window.location.href.match(/cols=(\d+)/);
+let get_rows = window.location.href.match(/rows=(\d+)/i);
+let get_cols = window.location.href.match(/cols=(\d+)/i);
 ROWS = (get_rows === null) ? 10 : Number.parseInt(get_rows[1])
 COLS = (get_cols === null) ? 10 : Number.parseInt(get_cols[1])
 
@@ -39,6 +39,19 @@ function setup() {
 
 	let usable_width = width - left_padding - right_padding;
 	let usable_height = height - top_padding - bottom_padding;
+
+	// check if passed argument to fill with passed size
+	let get_fitsize = window.location.href.match(/fitsize=(\d+)/i);
+	if (get_fitsize !== null) {
+		let block_size = Number.parseInt(get_fitsize[1]);
+		let ncols = Math.floor(usable_width / block_size);
+		let nrows = Math.floor(usable_height / block_size);
+
+		// window.location.href = window.location.origin + `?rows=${nrows}&cols=${ncols}`;
+		COLS = ncols;
+		ROWS = nrows;
+	}
+
 	if (usable_width / COLS > usable_height / ROWS) {
 		// bigger width / cols
 		w = usable_height / ROWS;
@@ -49,6 +62,12 @@ function setup() {
 	translate_x = width - usable_width - right_padding;
 	translate_y = height - usable_height - bottom_padding;
 	h = w;
+	let get_fit = window.location.href.match(/[?&]fit(?:=[a-z0-9]*)?(?:$|&)/i);
+	if (get_fitsize === null && get_fit !== null) {
+		// fill with default size
+		COLS = Math.floor(usable_width / w);
+		ROWS = Math.floor(usable_height / h);
+	}
 	textSize(font_size);
 	restart();
 }
