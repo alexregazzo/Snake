@@ -3,8 +3,11 @@ let ROWS;
 
 let get_rows = window.location.href.match(/rows=(\d+)/i);
 let get_cols = window.location.href.match(/cols=(\d+)/i);
-ROWS = (get_rows === null) ? 10 : Number.parseInt(get_rows[1])
-COLS = (get_cols === null) ? 10 : Number.parseInt(get_cols[1])
+ROWS = (get_rows === null) ? 10 : Number.parseInt(get_rows[1]);
+COLS = (get_cols === null) ? 10 : Number.parseInt(get_cols[1]);
+
+let get_food = window.location.href.match(/food=(\d+)/i);
+let FOOD_AMOUNT = (get_food === null) ? 1 : Number.parseInt(get_food[1]);
 
 let LEFT;
 let RIGHT;
@@ -89,7 +92,9 @@ function restart() {
 	foods = [];
 	dead_snake_parts = [];
 	player = new Snake();
-	new_food();
+	for (let i = 0; i < FOOD_AMOUNT; i++) {
+		new_food();
+	}
 }
 
 function draw() {

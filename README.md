@@ -34,6 +34,10 @@ You can add queries using GET method to change map size
 > **Example fitting defined block size of 50 pixels:**<br/>
 > https://alexregazzo.github.io/Snake/?fitsize=50
 
+* Set amount of food (default 1): `food=[FOOD_AMOUNT]`
+> **Example of 10 foods:**<br/>
+> https://alexregazzo.github.io/Snake/?food=10
+
 __**Warning**__:  Order of query does not matter.<br/>
 __**Warning**__:  Multi-definitions of a query are ignored, first definition is used.<br/>
 __**Warning**__:  `fitsize` overrides `cols` and `rows`, no change if used with `fit`.<br/>
