@@ -198,6 +198,14 @@ class Snake {
 		this.direction = null;
 		this.last_move = 0;
 		this.move_interval = 200; //millis
+		this.ok_to_move = true;
+	}
+
+	set_direction(DIR) {
+		if (this.ok_to_move) {
+			this.direction = DIR;
+			this.ok_to_move = false;
+		}
 	}
 
 	check_hit_itself() {
@@ -287,8 +295,8 @@ class Snake {
 				this.body.unshift(head);
 				this.body.pop();
 				this.last_move = millis();
+				this.ok_to_move = true;
 				this.check_hit_itself()
-				// console.log(...this.body);
 			}
 		}
 	}
@@ -298,19 +306,19 @@ function keyPressed() {
 	switch (keyCode) {
 		case LEFT:
 			if (player.direction === RIGHT) break;
-			player.direction = LEFT
+			player.set_direction(LEFT);
 			break;
 		case RIGHT:
 			if (player.direction === LEFT) break;
-			player.direction = RIGHT
+			player.set_direction(RIGHT);
 			break;
 		case UP:
 			if (player.direction === DOWN) break;
-			player.direction = UP
+			player.set_direction(UP);
 			break;
 		case DOWN:
 			if (player.direction === UP) break;
-			player.direction = DOWN
+			player.set_direction(DOWN);
 			break;
 		case 32: //space
 			if (player instanceof Snake && player.is_dead()) {
