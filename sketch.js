@@ -239,7 +239,7 @@ class Snake {
 			...this.body[this.body.length - 1]
 		});
 		this.score++;
-		this.move_interval-=10;
+		this.move_interval -= 5;
 		// noLoop();
 	}
 	is_dead() {
