@@ -240,6 +240,7 @@ class Snake {
 		});
 		this.score++;
 		this.move_interval -= 5;
+		if (this.move_interval < 50) this.move_interval = 50;
 		// noLoop();
 	}
 	is_dead() {
