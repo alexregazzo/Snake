@@ -27,6 +27,19 @@ let font_size = 20;
 
 let w;
 let h;
+let version;
+
+function preload() {
+	fetch("https://api.github.com/repos/alexregazzo/Snake/commits").then(function (response) {
+		if (response.status === 200) {
+			return response.json();
+		} else throw new Error("Not 200 response")
+	}).then(function (data) {
+		version = data.length;
+	}).catch(function (error) {
+		version = "error"
+	});
+}
 
 function setup() {
 
@@ -85,9 +98,9 @@ function draw() {
 		background(150, 33, 33);
 		noStroke();
 		fill(255, 50, 50);
-		text(`Game over`, 0, font_size * 3);
+		text(`Game over`, 0, font_size * 4);
 		fill(255, 255, 0);
-		text(`Press space to restart`, 0, font_size * 4);
+		text(`Press space to restart`, 0, font_size * 5);
 		// noLoop();
 	} else {
 		// GAME RUNNING
@@ -96,7 +109,7 @@ function draw() {
 			// GAME JUST STARTED
 			noStroke();
 			fill(255);
-			text(`Press arrow to start`, 0, font_size * 3);
+			text(`Press arrow to start`, 0, font_size * 4);
 		}
 
 		// player move
@@ -120,8 +133,9 @@ function draw() {
 	}
 	noStroke();
 	fill(255);
-	text(`Score: ${round(player.score)}`, 0, font_size * 1);
-	text(`Score lost: ${round(player.score_lost)}`, 0, font_size * 2);
+	text(`Version: ${version}`, 0, font_size * 1);
+	text(`Score: ${round(player.score)}`, 0, font_size * 2);
+	text(`Score lost: ${round(player.score_lost)}`, 0, font_size * 3);
 
 	translate(translate_x, translate_y);
 
