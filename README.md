@@ -3,6 +3,7 @@
 ## Features:
 * Cross wall
 * When you hit yourself instead of dying instantaneously you split yourself off, leaving a dead snake on the field that will make you lose length if you hit it.
+* Increase speed every growth.
 
 ## Map properties
 You can add queries using GET method to change map size

@@ -197,7 +197,7 @@ class Snake {
 		this.score_lost = 0;
 		this.direction = null;
 		this.last_move = 0;
-		this.move_interval = 100; //millis
+		this.move_interval = 200; //millis
 	}
 
 	check_hit_itself() {
@@ -239,6 +239,7 @@ class Snake {
 			...this.body[this.body.length - 1]
 		});
 		this.score++;
+		this.move_interval-=10;
 		// noLoop();
 	}
 	is_dead() {
